@@ -14,8 +14,19 @@
         "ryanluker.vscode-coverage-gutters"
       ],
       "settings": {
+        "java.server.launchMode": "Standard",
         "java.test.defaultConfig": "default",
+        "java.test.config": [
+          {
+            "name": "default",
+            "workingDirectory": "${workspaceFolder}",
+            "testKind": "junit"
+          }
+        ],
         "java.configuration.updateBuildConfiguration": "automatic",
+        "java.import.maven.enabled": true,
+        "java.import.gradle.enabled": false,
+        "maven.executable.preferMavenWrapper": true,
         "editor.formatOnSave": true
       }
     }

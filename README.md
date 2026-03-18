@@ -169,7 +169,7 @@ Detalhando cada etapa:
 3. Clique em **"Create codespace on main"**.
 4. Aguarde o ambiente ser carregado (2–3 minutos na primeira vez).
 
-> 💡 O Codespace já vem com o **Java 21 (JDK)** e todas as extensões do VS Code pré-configuradas, incluindo o **Test Runner for Java** que habilita o Test Explorer.
+> 💡 O Codespace já vem com o **Java 21 (JDK)** e todas as extensões do VS Code pré-configuradas, incluindo o **Test Runner for Java** que habilita a view **Testing**.
 
 ### Passo 3 — Verificar o ambiente
 
@@ -195,6 +195,15 @@ A extensão **Test Runner for Java** permite executar testes de forma visual:
 2. Você verá a árvore de testes organizados por pacote e classe.
 3. Clique no botão ▶️ ao lado de um teste para executá-lo individualmente.
 4. Use o botão ▶️ no topo para executar todos os testes.
+
+Se a view **Testing** não aparecer automaticamente no Codespaces:
+
+1. Aguarde a importação do projeto Java terminar.
+2. Verifique se o workspace abriu em modo **Standard** para Java.
+3. Abra a Paleta de Comandos e execute **Java: Import Java Projects in Workspace**.
+4. Se ainda não aparecer, execute **Java: Clean Java Language Server Workspace** e recarregue a janela.
+
+> O workspace já está configurado para abrir em modo **Standard** e preferir o Maven Wrapper. Isso é necessário porque o modo **LightWeight** não resolve dependências Maven e pode impedir que a árvore de testes seja exibida.
 
 Você também pode executar testes pelo terminal:
 
