@@ -53,8 +53,14 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void depositar(double valor) {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        if (valor <= 0) {
+            throw new IllegalArgumentException("O valor do depósito deve ser maior que zero.");
+        }
+        if (!ativa) {
+            throw new IllegalStateException("Conta inativa não permite depósito.");
+        }
+
+        saldo += valor;
     }
 
     /**
@@ -66,8 +72,17 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
     public void sacar(double valor) {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        if (valor <= 0) {
+            throw new IllegalArgumentException("O valor do saque deve ser maior que zero.");
+        }
+        if (!ativa) {
+            throw new IllegalStateException("Conta inativa não permite saque.");
+        }
+        if (valor > saldo) {
+            throw new IllegalStateException("Saldo insuficiente para saque.");
+        }
+
+        saldo -= valor;
     }
 
     /**
@@ -79,8 +94,21 @@ public class Conta {
      *   - O saldo de ambas as contas deve ser atualizado corretamente.
      */
     public void transferir(Conta destino, double valor) {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        if (destino == null) {
+            throw new IllegalArgumentException("Conta de destino não pode ser nula.");
+        }
+        if (valor <= 0) {
+            throw new IllegalArgumentException("O valor da transferência deve ser maior que zero.");
+        }
+        if (!this.ativa || !destino.ativa) {
+            throw new IllegalStateException("Ambas as contas devem estar ativas para transferência.");
+        }
+        if (valor > this.saldo) {
+            throw new IllegalStateException("Saldo insuficiente para transferência.");
+        }
+
+        this.saldo -= valor;
+        destino.saldo += valor;
     }
 
     /**
@@ -91,7 +119,13 @@ public class Conta {
      *   - A propriedade ativa deve ser alterada para false.
      */
     public void encerrar() {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
+        if (!ativa) {
+            throw new IllegalStateException("Conta já está inativa.");
+        }
+        if (saldo != 0) {
+            throw new IllegalStateException("Não é possível encerrar conta com saldo diferente de zero.");
+        }
+
+        ativa = false;
     }
 }
